@@ -1,6 +1,11 @@
 # weather-dashboard
 make use of third party API to create a weather dashboard that will hold previous searches to click between and view weather results for each location
 
+## Description
+
+## Usage
+
+## Screenshot/Link
 
 # 06 Server-Side APIs: Weather Dashboard
 
