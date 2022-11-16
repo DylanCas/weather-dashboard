@@ -1,5 +1,5 @@
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=f95c2d04f516fc0e509fd5fd102333d4
-// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=f95c2d04f516fc0e509fd5fd102333d4
+// https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=f95c2d04f516fc0e509fd5fd102333d4
 var searchCity = document.getElementById("searchCity")
 
 searchCity.addEventListener("click", function() {
@@ -17,7 +17,7 @@ searchCity.addEventListener("click", function() {
     }).then(function(data){
         console.log(data)
         // create elements, append elements with data indexes
-        
+
     })
 })
 })
