@@ -2,12 +2,21 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+header h1 {
+    background-color: #2a54c7;
+    color: aliceblue;
+    text-align: end;
+    padding: 1%;
+}
+
 .searchArea {
     border: solid 2px black;
     border-radius: 5px;
+    margin: 5px;
 }
 
 .currentWeather {
+    margin: 5px;
     padding: 5%;
     border: solid 2px black;
     border-radius: 5px;

@@ -44,21 +44,21 @@ function searchWeather (cityName, stateCode) {
             console.log(weather)
             var weatherList = document.getElementById("currentWeather")
             // current temp 
-            var tempEl = document.createElement('p')
-            tempEl.textContent = 'Current Temperature(F) = ' + weather.main.temp
-            weatherList.appendChild(tempEl)
+            var tempEl = document.getElementById('currentTemp')
+            tempEl.textContent = 'Current Temperature(F) = ' + Math.round(weather.main.temp)
+            // weatherList.appendChild(tempEl)
             // high temp
-            var maxTempEl = document.createElement('p')
-            maxTempEl.textContent = 'High Temperature(F) = ' + weather.main.temp_max
-            weatherList.appendChild(maxTempEl)
+            var maxTempEl = document.getElementById('highTemp')
+            maxTempEl.textContent = 'High Temperature(F) = ' + Math.round(weather.main.temp_max)
+            // weatherList.appendChild(maxTempEl)
             // low temp
-            var lowTempEl = document.createElement('p')
-            lowTempEl.textContent = 'Low Temperature(F) = ' + weather.main.temp_min
-            weatherList.appendChild(lowTempEl)
+            var lowTempEl = document.getElementById('lowTemp')
+            lowTempEl.textContent = 'Low Temperature(F) = ' + Math.round(weather.main.temp_min)
+            // weatherList.appendChild(lowTempEl)
             // winds
-            var windEl = document.createElement('p')
+            var windEl = document.getElementById('wind')
             windEl.textContent = 'Wind = ' + weather.wind.speed
-            weatherList.appendChild(windEl)
+            // weatherList.appendChild(windEl)
         })
         // create elements, append elements with data indexes - But what indexes?
 

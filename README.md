@@ -14,6 +14,9 @@ The searched for city will appear as an item beneath that can be clicked to reca
 ![screenshot](./assets/images/)
 link: 
 
+## Credits
+Weather data and API usage provided by OpenWeatherMaps(https://openweathermap.org/)
+
 # 06 Server-Side APIs: Weather Dashboard
 
 ## Your Task
