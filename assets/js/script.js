@@ -7,7 +7,7 @@ var apiKey = 'f95c2d04f516fc0e509fd5fd102333d4'
 
 var searchCity = document.getElementById("searchCity")
 
-var cityList = JSON.parse(sessionStorage.getItem("cityList")) || []
+var cityList = JSON.parse(localStorage.getItem("cityList")) || []
 // loop through city list and create button for each city/storage item
 
 // add event listener for each button that reruns the fetch
@@ -20,7 +20,7 @@ searchCity.addEventListener("click", function() {
     var cityList = JSON.parse(localStorage.getItem("cityList")) || []
     var cityObj = {cityName, stateCode}
     cityList.push(cityObj)
-    sessionStorage.setItem('cityList', JSON.stringify(cityList))
+    localStorage.setItem('cityList', JSON.stringify(cityList))
     searchWeather(cityName, stateCode)
 })
 
@@ -42,12 +42,23 @@ function searchWeather (cityName, stateCode) {
             return response.json();
         }).then(function(weather){
             console.log(weather)
-            var forecastList = document.getElementById("weatherForecast")
+            var weatherList = document.getElementById("currentWeather")
+            // current temp 
             var tempEl = document.createElement('p')
-            tempEl.textContent = 'Temperature(F) = ' + weather.main.temp
-            forecastList.appendChild(tempEl)
+            tempEl.textContent = 'Current Temperature(F) = ' + weather.main.temp
+            weatherList.appendChild(tempEl)
+            // high temp
+            var maxTempEl = document.createElement('p')
+            maxTempEl.textContent = 'High Temperature(F) = ' + weather.main.temp_max
+            weatherList.appendChild(maxTempEl)
+            // low temp
+            var lowTempEl = document.createElement('p')
+            lowTempEl.textContent = 'Low Temperature(F) = ' + weather.main.temp_min
+            weatherList.appendChild(lowTempEl)
+            // winds
             var windEl = document.createElement('p')
-            windEl.textContent = 'Wind'
+            windEl.textContent = 'Wind = ' + weather.wind.speed
+            weatherList.appendChild(windEl)
         })
         // create elements, append elements with data indexes - But what indexes?
 
