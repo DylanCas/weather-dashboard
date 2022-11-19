@@ -2,16 +2,21 @@
 // fetch area info by zip http://api.openweathermap.org/geo/1.0/zip?zip={zip code},{country code}&appid=${apiKey}
 // fetch forecast by lat/lon by 1st api fetch https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${apiKey}
 // fetch current weather by lat/lon by 1st api fetch https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}
-// OpenWeather API key
-var apiKey = 'f95c2d04f516fc0e509fd5fd102333d4'
 
-var searchCity = document.getElementById("searchCity")
+// OpenWeather API key
+const apiKey = 'f95c2d04f516fc0e509fd5fd102333d4'
 
 var cityList = JSON.parse(localStorage.getItem("cityList")) || []
 // loop through city list and create button for each city/storage item
+for (i = 0; i < cityList.length; i++) {
+    let searchlist = document.getElementById("searchList")
+    var searchListLI = document.createElement("ul")
+    searchListLI.textContent = ''
 
+}
 // add event listener for each button that reruns the fetch
 
+var searchCity = document.getElementById("searchCity")
 searchCity.addEventListener("click", function() {
     var locationSearch = document.getElementById("citySearch").value
     var locationArray = locationSearch.split(",")
@@ -21,6 +26,7 @@ searchCity.addEventListener("click", function() {
     var cityObj = {cityName, stateCode}
     cityList.push(cityObj)
     localStorage.setItem('cityList', JSON.stringify(cityList))
+    console.log(cityList)
     searchWeather(cityName, stateCode)
 })
 
@@ -42,7 +48,7 @@ function searchWeather (cityName, stateCode) {
             return response.json();
         }).then(function(weather){
             console.log(weather)
-            var weatherList = document.getElementById("currentWeather")
+            // var weatherList = document.getElementById("currentWeather")
             // current temp 
             var tempEl = document.getElementById('currentTemp')
             tempEl.textContent = 'Current Temperature(F) = ' + Math.round(weather.main.temp)
@@ -59,9 +65,9 @@ function searchWeather (cityName, stateCode) {
             var windEl = document.getElementById('wind')
             windEl.textContent = 'Wind = ' + weather.wind.speed
             // weatherList.appendChild(windEl)
+            var cityTitleEl = document.getElementById('cityText')
+            cityTitleEl.textContent = cityName
         })
-        // create elements, append elements with data indexes - But what indexes?
-
     })
 })
 }
