@@ -51,15 +51,15 @@ function searchWeather (cityName, stateCode) {
             // var weatherList = document.getElementById("currentWeather")
             // current temp 
             var tempEl = document.getElementById('currentTemp')
-            tempEl.textContent = 'Current Temperature(F) = ' + Math.round(weather.main.temp)
+            tempEl.textContent = 'Current Temp(F) = ' + Math.round(weather.main.temp)
             // weatherList.appendChild(tempEl)
             // high temp
             var maxTempEl = document.getElementById('highTemp')
-            maxTempEl.textContent = 'High Temperature(F) = ' + Math.round(weather.main.temp_max)
+            maxTempEl.textContent = 'High Temp(F) = ' + Math.round(weather.main.temp_max)
             // weatherList.appendChild(maxTempEl)
             // low temp
             var lowTempEl = document.getElementById('lowTemp')
-            lowTempEl.textContent = 'Low Temperature(F) = ' + Math.round(weather.main.temp_min)
+            lowTempEl.textContent = 'Low Temp(F) = ' + Math.round(weather.main.temp_min)
             // weatherList.appendChild(lowTempEl)
             // winds
             var windEl = document.getElementById('wind')
