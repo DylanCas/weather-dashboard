@@ -6,12 +6,14 @@
 // OpenWeather API key
 const apiKey = 'f95c2d04f516fc0e509fd5fd102333d4'
 
-var cityList = JSON.parse(localStorage.getItem("cityList")) || []
-// loop through city list and create button for each city/storage item
+var cityList = JSON.parse(sessionStorage.getItem("cityList")) || []
+
+// TODO: loop through city list and create button for each city/storage item
 for (i = 0; i < cityList.length; i++) {
     let searchlist = document.getElementById("searchList")
-    var searchListLI = document.createElement("ul")
-    searchListLI.textContent = ''
+    var searchListLiEl = document.createElement("button")
+    searchListLiEl.textContent = cityList[i].cityName + cityList[0].stateCode
+    searchlist.appendChild(searchListLiEl)
 
 }
 // add event listener for each button that reruns the fetch
@@ -22,14 +24,15 @@ searchCity.addEventListener("click", function() {
     var locationArray = locationSearch.split(",")
     var cityName = locationArray[0]
     var stateCode = locationArray[1]
-    var cityList = JSON.parse(localStorage.getItem("cityList")) || []
+    var cityList = JSON.parse(sessionStorage.getItem("cityList")) || []
     var cityObj = {cityName, stateCode}
     cityList.push(cityObj)
-    localStorage.setItem('cityList', JSON.stringify(cityList))
+    sessionStorage.setItem('cityList', JSON.stringify(cityList))
     console.log(cityList)
     searchWeather(cityName, stateCode)
 })
 
+// Takes city search input to pull weather info for the location and display select info on page
 function searchWeather (cityName, stateCode) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&${stateCode}&appid=${apiKey}`)
 .then(function (response){
