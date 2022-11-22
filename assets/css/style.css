@@ -19,9 +19,17 @@ header h1 {
     padding: 1%;
 }
 
+.container1 {
+    display: flex;
+    flex-direction: row;
+}
+
 .searchArea {
     display: flex;
+    flex: 1;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: solid 2px black;
     border-radius: 5px;
     margin: 3px;
@@ -30,6 +38,7 @@ header h1 {
 
 .currentWeather {
     display: flex;
+    flex: 2;
     flex-direction: column;
     margin: 3px;
     padding: 5px;
@@ -37,9 +46,14 @@ header h1 {
     border-radius: 5px;
 }
 
-.weatherForecast {
+.container2 {
     display: flex;
     flex-direction: row;
+}
+
+.weatherForecast {
+    display: flex;
+    flex: 85%;
     justify-content: space-evenly;
     border: solid 2px black;
     margin: 3px;
@@ -47,6 +61,9 @@ header h1 {
 }
 
 .searchList {
+    display: flex;
+    flex: 15%;
+    justify-content: flex-start;
     border: solid 2px black;
     margin: 3px;
     padding: 3px;
