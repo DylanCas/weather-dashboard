@@ -11,8 +11,8 @@ The searched for city will appear as an item beneath that can be clicked to reca
 
 ## Screenshot/Link
 
-![screenshot](./assets/images/)
-link: 
+![screenshot](./assets/images/DeployedChallenge6.png)
+link: https://dylancas.github.io/weather-dashboard/
 
 ## Credits
 Weather data and API usage provided by OpenWeatherMaps(https://openweathermap.org/)
