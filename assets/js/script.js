@@ -17,7 +17,7 @@ for (i = 0; i < cityList.length; i++) {
     
 
 }
-// add event listener for each button that reruns the fetch
+//TODO: add event listener for each button that reruns the fetch
 
 var searchCity = document.getElementById("searchCity")
 searchCity.addEventListener("click", function() {
@@ -49,6 +49,9 @@ function searchWeather (cityName, stateCode) {
         console.log(forecast)
         // displaying forecast data results on screen
         const day1Block = document.getElementById("day1")
+            let date1 = document.getElementById("date1")
+            let dateFormula1 = new Date(forecast.list[4].dt * 1000)
+            date1.textContent = dateFormula1.toLocaleDateString("en-US")
             var temp1 = document.getElementById("temp1")
             temp1.textContent = 'Temp: ' + Math.round(forecast.list[4].main.temp)
             var humidity1 = document.getElementById("humidity1")
@@ -57,6 +60,9 @@ function searchWeather (cityName, stateCode) {
             wind1.textContent = 'Winds: ' + forecast.list[4].wind.speed
 
         const day2Block = document.getElementById("day2")
+            let date2 = document.getElementById("date2")
+            let dateFormula2 = new Date(forecast.list[12].dt * 1000)
+            date2.textContent = dateFormula2.toLocaleDateString("en-US")
             var temp2 = document.getElementById("temp2")
             temp2.textContent = 'temp: ' + Math.round(forecast.list[12].main.temp)
             var humidity2 = document.getElementById("humidity2")
@@ -65,6 +71,9 @@ function searchWeather (cityName, stateCode) {
             wind2.textContent = 'Winds: ' + forecast.list[12].wind.speed
 
         const day3Block = document.getElementById("day3")
+            let date3 = document.getElementById("date3")
+            let dateFormula3 = new Date(forecast.list[20].dt * 1000)
+            date3.textContent = dateFormula3.toLocaleDateString("en-US")
             var temp3 = document.getElementById("temp3")
             temp3.textContent = 'Temp: ' + Math.round(forecast.list[20].main.temp)
             var humidity3 = document.getElementById("humidity3")
@@ -73,6 +82,9 @@ function searchWeather (cityName, stateCode) {
             wind3.textContent = 'Winds: ' + forecast.list[20].wind.speed
 
         const day4Block = document.getElementById("day4")
+            let date4 = document.getElementById("date4")
+            let dateFormula4 = new Date(forecast.list[28].dt * 1000)
+            date4.textContent = dateFormula4.toLocaleDateString("en-US")
             var temp4 = document.getElementById("temp4")
             temp4.textContent = 'Temp: ' + Math.round(forecast.list[28].main.temp)
             var humidity4 = document.getElementById("humidity4")
@@ -81,6 +93,9 @@ function searchWeather (cityName, stateCode) {
             wind4.textContent = 'Winds: ' + forecast.list[28].wind.speed
 
         const day5Block = document.getElementById("day5")
+            let date5 = document.getElementById("date5")
+            let dateFormula5 = new Date(forecast.list[36].dt * 1000)
+            date5.textContent = dateFormula5.toLocaleDateString("en-US")
             var temp5 = document.getElementById("temp5")
             temp5.textContent = 'Temp: ' + Math.round(forecast.list[36].main.temp)
             var humidity5 = document.getElementById("humidity5")
@@ -97,6 +112,9 @@ function searchWeather (cityName, stateCode) {
         }).then(function(weather){
             console.log(weather)
             // displaying current weather data on screen
+            var dateEl = document.getElementById('date')
+            let currrentDate = new Date(weather.dt * 1000)
+            dateEl.textContent = currrentDate.toLocaleDateString("en-US")
             // current temp 
             var tempEl = document.getElementById('currentTemp')
             tempEl.textContent = 'Current Temp(F) = ' + Math.round(weather.main.temp)
