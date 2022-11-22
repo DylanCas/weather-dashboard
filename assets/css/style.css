@@ -2,6 +2,16 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100%;
+}
+
 header h1 {
     background-color: #2a54c7;
     color: aliceblue;
@@ -10,14 +20,40 @@ header h1 {
 }
 
 .searchArea {
+    display: flex;
+    flex-direction: column;
     border: solid 2px black;
     border-radius: 5px;
     margin: 3px;
+    padding: 3px;
 }
 
 .currentWeather {
+    display: flex;
+    flex-direction: column;
     margin: 3px;
-    padding: 5%;
+    padding: 5px;
     border: solid 2px black;
     border-radius: 5px;
+}
+
+.weatherForecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: solid 2px black;
+    margin: 3px;
+    padding: 3px;
+}
+
+.searchList {
+    border: solid 2px black;
+    margin: 3px;
+    padding: 3px;
+}
+
+.searchList, button {
+    display: flex;
+    flex-direction: column;
+    margin: 3px;
 }

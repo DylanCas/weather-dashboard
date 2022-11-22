@@ -12,48 +12,69 @@
     <header>
         <h1 class="">Weather Dash</h1>
     </header>
-    <section class="searchArea row col-lg-3">
+    <section class="searchArea row">
         <h2>Search for a city</h2>
         <input type="text" placeholder="City name, State" id="citySearch"/>
         <button id="searchCity">Search</button>
     </section>
 
+    <!-- section block where current weather data will be placed -->
+    <section id="currentWeather" class="currentWeather row">
+        <h3>Current Weather</h3>
+        <h3 id="cityText"></h3>
+        <p id="currentTemp"></p>
+        <p id="humidity"></p>
+        <p id="highTemp"></p>
+        <p id="lowTemp"></p>
+        <p id="wind"></p>
+    </section>    
+
+    <!-- section where 5 day weather forecast will be placed -->
+    <section id="weatherForecast" class="weatherForecast">
+        <div id="day1">
+            <p>Tomorrow</p>
+            <p id="temp1"></p>
+            <p id="humidity1"></p>
+            <p id="wind1"></p>
+        </div>
+
+        <div id="day2">
+            <p>Day 2</p>
+            <p id="temp2"></p>
+            <p id="humidity2"></p>
+            <p id="wind2"></p>
+        </div>
+
+        <div id="day3">
+            <p>Day 3</p>
+            <p id="temp3"></p>
+            <p id="humidity3"></p>
+            <p id="wind3"></p>
+        </div>
+
+        <div id="day4">
+            <p>Day 4</p>
+            <p id="temp4"></p>
+            <p id="humidity4"></p>
+            <p id="wind4"></p>
+        </div>
+        
+        <div id="day5">
+            <p>Day 5</p>
+            <p id="temp5"></p>
+            <p id="humidity5"></p>
+            <p id="wind5"></p>
+        </div>
+
+    </section>
+
     <!-- section block where location search history will be placed -->
-    <section>
+    <section class="searchList">
+        <h3>Location History</h3>
         <ul id="searchList">
 
         </ul>
     </section>
-
-    <!-- section block where current weather data will be placed -->
-    <section id="currentWeather" class="currentWeather ">
-        <h3 id="cityText"></h3>
-        <p id="currentTemp"></p>
-        <p id="highTemp"></p>
-        <p id="lowTemp"></p>
-        <p id="wind"></p>
-    </section>
-
-    <!-- section where 5 day weather forecast will be placed -->
-    <section id="weatherForecast">
-        <div id="day1">
-
-        </div>
-        <div id="day2">
-            
-        </div>
-        <div id="day3">
-
-        </div>
-        <div id="day4">
-
-        </div>
-        <div id="day5">
-
-        </div>
-    </section>
-
-
 
     <footer>
 

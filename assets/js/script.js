@@ -14,6 +14,7 @@ for (i = 0; i < cityList.length; i++) {
     var searchListLiEl = document.createElement("button")
     searchListLiEl.textContent = cityList[i].cityName + cityList[0].stateCode
     searchlist.appendChild(searchListLiEl)
+    
 
 }
 // add event listener for each button that reruns the fetch
@@ -28,7 +29,6 @@ searchCity.addEventListener("click", function() {
     var cityObj = {cityName, stateCode}
     cityList.push(cityObj)
     sessionStorage.setItem('cityList', JSON.stringify(cityList))
-    console.log(cityList)
     searchWeather(cityName, stateCode)
 })
 
@@ -37,37 +37,80 @@ function searchWeather (cityName, stateCode) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&${stateCode}&appid=${apiKey}`)
 .then(function (response){
     return response.json();
-}).then(function(data){
-    var lat = data[0].lat
-    var lon = data[0].lon
-    console.log(data)
+}).then(function(locationData){
+    var lat = locationData[0].lat
+    var lon = locationData[0].lon
+    console.log(locationData)
+    // forecast weather data
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
     .then(function (response){
         return response.json();
     }).then(function(forecast){
         console.log(forecast)
+        // displaying forecast data results on screen
+        const day1Block = document.getElementById("day1")
+            var temp1 = document.getElementById("temp1")
+            temp1.textContent = 'Temp: ' + Math.round(forecast.list[4].main.temp)
+            var humidity1 = document.getElementById("humidity1")
+            humidity1.textContent = 'Humidity%: ' + forecast.list[4].main.humidity
+            var wind1 = document.getElementById("wind1")
+            wind1.textContent = 'Winds: ' + forecast.list[4].wind.speed
+
+        const day2Block = document.getElementById("day2")
+            var temp2 = document.getElementById("temp2")
+            temp2.textContent = 'temp: ' + Math.round(forecast.list[12].main.temp)
+            var humidity2 = document.getElementById("humidity2")
+            humidity2.textContent = 'Humidity%: ' + forecast.list[12].main.humidity
+            var wind2 = document.getElementById("wind2")
+            wind2.textContent = 'Winds: ' + forecast.list[12].wind.speed
+
+        const day3Block = document.getElementById("day3")
+            var temp3 = document.getElementById("temp3")
+            temp3.textContent = 'Temp: ' + Math.round(forecast.list[20].main.temp)
+            var humidity3 = document.getElementById("humidity3")
+            humidity3.textContent = 'Humidity%: ' + forecast.list[20].main.humidity
+            var wind3 = document.getElementById("wind3")
+            wind3.textContent = 'Winds: ' + forecast.list[20].wind.speed
+
+        const day4Block = document.getElementById("day4")
+            var temp4 = document.getElementById("temp4")
+            temp4.textContent = 'Temp: ' + Math.round(forecast.list[28].main.temp)
+            var humidity4 = document.getElementById("humidity4")
+            humidity4.textContent = 'Humidity%: ' + forecast.list[28].main.humidity
+            var wind4 = document.getElementById("wind4")
+            wind4.textContent = 'Winds: ' + forecast.list[28].wind.speed
+
+        const day5Block = document.getElementById("day5")
+            var temp5 = document.getElementById("temp5")
+            temp5.textContent = 'Temp: ' + Math.round(forecast.list[36].main.temp)
+            var humidity5 = document.getElementById("humidity5")
+            humidity5.textContent = 'Humidity%: ' + forecast.list[36].main.humidity
+            var wind5 = document.getElementById("wind5")
+            wind5.textContent = 'Winds: ' + forecast.list[36].wind.speed
+
+
+
+        // current weather data
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
         .then(function (response) {
             return response.json();
         }).then(function(weather){
             console.log(weather)
-            // var weatherList = document.getElementById("currentWeather")
+            // displaying current weather data on screen
             // current temp 
             var tempEl = document.getElementById('currentTemp')
             tempEl.textContent = 'Current Temp(F) = ' + Math.round(weather.main.temp)
-            // weatherList.appendChild(tempEl)
             // high temp
             var maxTempEl = document.getElementById('highTemp')
             maxTempEl.textContent = 'High Temp(F) = ' + Math.round(weather.main.temp_max)
-            // weatherList.appendChild(maxTempEl)
             // low temp
             var lowTempEl = document.getElementById('lowTemp')
             lowTempEl.textContent = 'Low Temp(F) = ' + Math.round(weather.main.temp_min)
-            // weatherList.appendChild(lowTempEl)
             // winds
             var windEl = document.getElementById('wind')
             windEl.textContent = 'Wind = ' + weather.wind.speed
-            // weatherList.appendChild(windEl)
+            var humidityEl = document.getElementById("humidity")
+            humidityEl.textContent = 'Humidity% = ' + weather.main.humidity
             var cityTitleEl = document.getElementById('cityText')
             cityTitleEl.textContent = cityName
         })
