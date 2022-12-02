@@ -19,9 +19,7 @@ for (i = 0; i < cityList.length; i++) {
 }
 //TODO: add event listener for each button that reruns the fetch
 let pastSearchBtn = document.getElementById("pastSearchBtn")
-pastSearchBtn.addEventListener("click", function() {
-
-})
+// pastSearchBtn.addEventListener("click", function() {})
 
 var searchCity = document.getElementById("searchCity")
 searchCity.addEventListener("click", function() {
