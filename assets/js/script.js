@@ -8,16 +8,20 @@ const apiKey = 'f95c2d04f516fc0e509fd5fd102333d4'
 
 var cityList = JSON.parse(sessionStorage.getItem("cityList")) || []
 
-// TODO: loop through city list and create button for each city/storage item
+// Fairly comfortable that the button is being created alright, unsure quite how to make button rerun the function successfully
+// TODO: button needs to show up upon making new search
 for (i = 0; i < cityList.length; i++) {
     let searchlist = document.getElementById("searchList")
     var searchListLiEl = document.createElement("button")
+    searchListLiEl.setAttribute("id", "pastSearchBtn")
     searchListLiEl.textContent = cityList[i].cityName + cityList[0].stateCode
     searchlist.appendChild(searchListLiEl)
-    
-
 }
 //TODO: add event listener for each button that reruns the fetch
+let pastSearchBtn = document.getElementById("pastSearchBtn")
+pastSearchBtn.addEventListener("click", function() {
+
+})
 
 var searchCity = document.getElementById("searchCity")
 searchCity.addEventListener("click", function() {
