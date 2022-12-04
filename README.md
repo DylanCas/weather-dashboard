@@ -11,7 +11,7 @@ The searched for city will appear as an item beneath that can be clicked to reca
 
 ## Screenshot/Link
 <!-- Screenshot works in preview -->
-![screenshot](./assets/images/deployedChallenge6.png)
+![screenshot](./assets/images/DeployedChallenge6.png)
 link: https://dylancas.github.io/weather-dashboard/
 
 ## Credits
