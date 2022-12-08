@@ -6,35 +6,50 @@
 // OpenWeather API key
 const apiKey = 'f95c2d04f516fc0e509fd5fd102333d4'
 
-var cityList = JSON.parse(sessionStorage.getItem("cityList")) || []
+let cityList = JSON.parse(localStorage.getItem("cityList")) || []
+let forecastList = JSON.parse(localStorage.getItem("forecastData")) || []
+let weatherList = JSON.parse(localStorage.getItem("weatherData")) || []
 
-// Fairly comfortable that the button is being created alright, unsure quite how to make button rerun the function successfully
-// TODO: button needs to show up upon making new search
+// TODO: button should show up upon making search
 for (i = 0; i < cityList.length; i++) {
     let searchlist = document.getElementById("searchList")
     var searchListLiEl = document.createElement("button")
-    searchListLiEl.setAttribute("id", "pastSearchBtn")
-    searchListLiEl.textContent = cityList[i].cityName + cityList[0].stateCode
+    searchListLiEl.setAttribute("class", "pastSearchBtn")
+    searchListLiEl.textContent = cityList[i].cityName + cityList[i].stateCode
     searchlist.appendChild(searchListLiEl)
 }
-//TODO: add event listener for each button that reruns the fetch
-let pastSearchBtn = document.getElementById("pastSearchBtn")
-// pastSearchBtn.addEventListener("click", function() {})
+
+// makes the past search history buttons rerun the weather search operation by splitting the value and assigning them the same
+function pSearchBtn(event) {
+    var element = event.target.textContent
+    console.log(element)
+    var y = element.split(" ")
+    var cityName = y[0]
+    var stateCode = y[1]
+    searchWeather(cityName, stateCode)
+}
+let pastSearchBtn = document.querySelectorAll(".pastSearchBtn")
+pastSearchBtn.forEach(x => {
+    x.onclick = pSearchBtn
+})
+
 
 var searchCity = document.getElementById("searchCity")
 searchCity.addEventListener("click", function() {
     var locationSearch = document.getElementById("citySearch").value
     var locationArray = locationSearch.split(",")
+    console.log(locationArray)
     var cityName = locationArray[0]
     var stateCode = locationArray[1]
-    var cityList = JSON.parse(sessionStorage.getItem("cityList")) || []
+    var cityList = JSON.parse(localStorage.getItem("cityList")) || []
     var cityObj = {cityName, stateCode}
     cityList.push(cityObj)
-    sessionStorage.setItem('cityList', JSON.stringify(cityList))
+    localStorage.setItem('cityList', JSON.stringify(cityList))
     searchWeather(cityName, stateCode)
 })
 
 // Takes city search input to pull weather info for the location and display select info on page
+// TODO: Input weather icon symbol on screen, using "icon" in weather/forecast Data, weather, icon. Likely need to save images within assets. 
 function searchWeather (cityName, stateCode) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&${stateCode}&appid=${apiKey}`)
 .then(function (response){
@@ -49,6 +64,8 @@ function searchWeather (cityName, stateCode) {
         return response.json();
     }).then(function(forecast){
         console.log(forecast)
+        // Use  below to save forecast data to local storage
+        localStorage.setItem("forecastData", JSON.stringify(forecast))
         // displaying forecast data results on screen
         const day1Block = document.getElementById("day1")
             let date1 = document.getElementById("date1")
@@ -113,6 +130,8 @@ function searchWeather (cityName, stateCode) {
             return response.json();
         }).then(function(weather){
             console.log(weather)
+            // Use below to save current weather data to local storage
+            localStorage.setItem("weatherData", JSON.stringify(weather))
             // displaying current weather data on screen
             var dateEl = document.getElementById('date')
             let currrentDate = new Date(weather.dt * 1000)
